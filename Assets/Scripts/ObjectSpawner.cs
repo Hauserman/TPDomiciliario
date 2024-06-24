@@ -30,7 +30,12 @@ public class ObjectSpawner : MonoBehaviour
         for (int i = 0; i < objectCant; i++)
         {
             Vector3 spawnPosition = new Vector3(Random.Range(-3, 3), 20, Random.Range(-1, 5));
-            Instantiate(Spawn[randomObject], spawnPosition, Quaternion.identity);
+            GameObject spawnedObject = Instantiate(Spawn[randomObject], spawnPosition, Quaternion.identity);
+            Renderer renderer = spawnedObject.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material.color = Random.ColorHSV();
+            }
         }
     }
 }
