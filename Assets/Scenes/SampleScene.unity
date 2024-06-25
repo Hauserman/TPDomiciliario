@@ -1016,7 +1016,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 820077756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1475487536}
+        m_MethodName: OnRepetirClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &820077756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1890,6 +1901,7 @@ MonoBehaviour:
   InfNum: {fileID: 613769827}
   TXTRespuesta: {fileID: 1116396752}
   repetir: {fileID: 1311772832}
+  intervalo: 4
   minObjects: 1
   maxObjects: 3
 --- !u!4 &1475487537

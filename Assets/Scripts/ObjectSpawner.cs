@@ -12,6 +12,7 @@ public class ObjectSpawner : MonoBehaviour
     public InputField InfNum;
     public Text TXTRespuesta;
     public Text repetir;
+    public float intervalo;
 
 
     public int minObjects = 5;
@@ -20,7 +21,7 @@ public class ObjectSpawner : MonoBehaviour
     bool juegoFrenado = false;
     void Start()
     {
-        InvokeRepeating(nameof(SpawnObjects), 0, 10f);
+        InvokeRepeating(nameof(SpawnObjects), 0, intervalo);
     }
     void Update()
     {
@@ -34,7 +35,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         juegoFrenado = false;
         PanRespuesta.SetActive(false);
-        InvokeRepeating(nameof(SpawnObjects), 0, 10f);
+        InvokeRepeating(nameof(SpawnObjects), 0, intervalo);
     }
 
     public void OnSalirClick()
@@ -71,7 +72,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         PanCampoVacio.SetActive(false);
         juegoFrenado = false;   
-        InvokeRepeating(nameof(SpawnObjects), 0, 10f);
+        InvokeRepeating(nameof(SpawnObjects), 0, intervalo);
     }
 
     void SpawnObjects()
@@ -79,9 +80,10 @@ public class ObjectSpawner : MonoBehaviour
         int objectCant = Random.Range(minObjects, maxObjects + 1);
         cantTotal += objectCant;
         int randomObject = Random.Range(0, Spawn.Length);
+        randomObject = 1;
         for (int i = 0; i < objectCant; i++)
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(-3, 3), 20, Random.Range(-1, 5));
+            Vector3 spawnPosition = new Vector3(Random.Range(-6, 3), 16, Random.Range(-3, 5));
             GameObject spawnedObject = Instantiate(Spawn[randomObject], spawnPosition, Quaternion.identity);
             Renderer renderer = spawnedObject.GetComponent<Renderer>();
             if (renderer != null)
