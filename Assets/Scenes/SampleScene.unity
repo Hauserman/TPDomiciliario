@@ -249,7 +249,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ingresar numero entero...
+  m_Text: 
 --- !u!222 &333205111
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: Ingresar numero entero...
+  m_Text: 
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634501880}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -775,7 +775,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Ingrese un numero entero...
 --- !u!222 &634501883
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1323,7 +1323,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1049142640}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1475487536}
+        m_MethodName: OnResponderClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1049142640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1863,6 +1874,9 @@ MonoBehaviour:
   Spawn:
   - {fileID: 2823205368359302372, guid: a985ccbeba5e35948b2e1bbf446a150e, type: 3}
   - {fileID: 5436757323192260917, guid: 34e3071532ecbc644bde50883f2abdbb, type: 3}
+  PanCampoVacio: {fileID: 1484884771}
+  PanRespuesta: {fileID: 595840740}
+  InfNum: {fileID: 613769827}
   minObjects: 5
   maxObjects: 10
 --- !u!4 &1475487537
@@ -1896,7 +1910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1484884772
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2214,7 +2228,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2133679174}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1475487536}
+        m_MethodName: OnAceptarClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2133679174
 MonoBehaviour:
   m_ObjectHideFlags: 0
