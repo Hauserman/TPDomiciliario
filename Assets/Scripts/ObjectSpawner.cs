@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject PanCampoVacio;
     public GameObject PanRespuesta;
     public InputField InfNum;
+    public Text TXTRespuesta;
+    public Text repetir;
+
 
     public int minObjects = 5;
     public int maxObjects = 10;
@@ -16,9 +20,8 @@ public class ObjectSpawner : MonoBehaviour
     bool juegoFrenado = false;
     void Start()
     {
-        InvokeRepeating(nameof(SpawnObjects), 0, 6f);
+        InvokeRepeating(nameof(SpawnObjects), 0, 10f);
     }
-
     void Update()
     {
         if (juegoFrenado)
@@ -26,6 +29,19 @@ public class ObjectSpawner : MonoBehaviour
             CancelInvoke();
         }
     }
+
+    public void OnRepetirClick()
+    {
+        juegoFrenado = false;
+        PanRespuesta.SetActive(false);
+        InvokeRepeating(nameof(SpawnObjects), 0, 10f);
+    }
+
+    public void OnSalirClick()
+    {
+        SceneManager.LoadScene("SeleccionarJuegos");
+    }
+
     public void OnResponderClick()
     {
         if (InfNum.text == "")
@@ -37,12 +53,17 @@ public class ObjectSpawner : MonoBehaviour
         {
             if (InfNum.text == cantTotal.ToString())
             {
-                PanRespuesta.SetActive(true);
+                TXTRespuesta.text = "Resultado correcto";
+                repetir.text = "Reiniciar el desafío";
                 juegoFrenado = true;
+                PanRespuesta.SetActive(true);
             }
             else
             {
-                print("Mal");
+                TXTRespuesta.text = "Resultado incorrecto";
+                repetir.text = "Volver a intentarlo";
+                juegoFrenado = true;
+                PanRespuesta.SetActive(true);
             }
         }
     }
