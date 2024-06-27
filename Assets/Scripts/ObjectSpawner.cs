@@ -7,35 +7,33 @@ using UnityEngine.SceneManagement;
 public class ObjectSpawner : MonoBehaviour
 {
     public GameObject[] Spawn; // Array de prefabs (esfera, cubo, triángulo)
+    public GameObject[] Spawned;
     public GameObject PanCampoVacio;
     public GameObject PanRespuesta;
     public InputField InfNum;
     public Text TXTRespuesta;
     public Text repetir;
-    public float intervalo;
-
-
     public int minObjects = 5;
     public int maxObjects = 10;
-    int cantTotal = 0;
-    bool juegoFrenado = false;
+    int objectCant;
+
     void Start()
     {
-        InvokeRepeating(nameof(SpawnObjects), 0, intervalo);
+
+        Spawned = new GameObject[maxObjects];
+
+        SpawnObjects();
     }
     void Update()
     {
-        if (juegoFrenado)
-        {
-            CancelInvoke();
-        }
+
     }
 
     public void OnRepetirClick()
     {
-        juegoFrenado = false;
+        DeleteSpawns();
         PanRespuesta.SetActive(false);
-        InvokeRepeating(nameof(SpawnObjects), 0, intervalo);
+        SpawnObjects();
     }
 
     public void OnSalirClick()
@@ -48,48 +46,48 @@ public class ObjectSpawner : MonoBehaviour
         if (InfNum.text == "")
         {
             PanCampoVacio.SetActive(true);
-            juegoFrenado = true;
+            InfNum.text = "";
         }
         else
         {
-            if (InfNum.text == cantTotal.ToString())
+            if (InfNum.text == objectCant.ToString())
             {
                 TXTRespuesta.text = "Resultado correcto";
                 repetir.text = "Reiniciar el desafío";
-                juegoFrenado = true;
                 PanRespuesta.SetActive(true);
+                InfNum.text = "";
             }
             else
             {
                 TXTRespuesta.text = "Resultado incorrecto";
                 repetir.text = "Volver a intentarlo";
-                juegoFrenado = true;
                 PanRespuesta.SetActive(true);
+
             }
         }
     }
     public void OnAceptarClick()
     {
         PanCampoVacio.SetActive(false);
-        juegoFrenado = false;   
-        InvokeRepeating(nameof(SpawnObjects), 0, intervalo);
     }
 
     void SpawnObjects()
     {
-        int objectCant = Random.Range(minObjects, maxObjects + 1);
-        cantTotal += objectCant;
-        int randomObject = Random.Range(0, Spawn.Length);
-        randomObject = 1;
+        objectCant = Random.Range(minObjects, maxObjects + 1);
         for (int i = 0; i < objectCant; i++)
         {
+            int randomObject = Random.Range(0, Spawn.Length);
             Vector3 spawnPosition = new Vector3(Random.Range(-6, 3), 16, Random.Range(-3, 5));
-            GameObject spawnedObject = Instantiate(Spawn[randomObject], spawnPosition, Quaternion.identity);
-            Renderer renderer = spawnedObject.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                renderer.material.color = Random.ColorHSV();
-            }
+            GameObject objeto = Instantiate(Spawn[randomObject], spawnPosition, Quaternion.identity);
+            Spawned[i] = objeto;
+        }
+    }
+
+    void DeleteSpawns()
+    {
+        foreach (GameObject objeto1 in Spawned)
+        {
+            Destroy(objeto1);
         }
     }
 }
