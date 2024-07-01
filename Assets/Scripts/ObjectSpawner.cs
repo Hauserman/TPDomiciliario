@@ -31,14 +31,12 @@ public class ObjectSpawner : MonoBehaviour
 
     public void OnRepetirClick()
     {
-        DeleteSpawns();
         PanRespuesta.SetActive(false);
-        SpawnObjects();
     }
 
     public void OnSalirClick()
     {
-        SceneManager.LoadScene("SeleccionarJuegos");
+        SceneManager.LoadScene("Inicio");
     }
 
     public void OnResponderClick()

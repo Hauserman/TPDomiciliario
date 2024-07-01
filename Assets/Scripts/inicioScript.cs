@@ -9,4 +9,9 @@ public class inicioScript : MonoBehaviour
     {
         SceneManager.LoadScene("juegoSuma");
     }
+
+    public void irACantObjetos()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
 }
