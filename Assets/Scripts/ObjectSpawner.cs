@@ -16,6 +16,7 @@ public class ObjectSpawner : MonoBehaviour
     public int minObjects = 5;
     public int maxObjects = 10;
     int objectCant;
+    bool resultado = false;
 
     void Start()
     {
@@ -32,6 +33,14 @@ public class ObjectSpawner : MonoBehaviour
     public void OnRepetirClick()
     {
         PanRespuesta.SetActive(false);
+        if (resultado)
+        {
+            for (int i = 0; i < Spawned.Length; i++)
+            {
+                Destroy(Spawned[i]);
+            }
+            SpawnObjects();
+        }
     }
 
     public void OnSalirClick()
@@ -50,6 +59,7 @@ public class ObjectSpawner : MonoBehaviour
         {
             if (InfNum.text == objectCant.ToString())
             {
+                resultado = true;
                 TXTRespuesta.text = "Resultado correcto";
                 repetir.text = "Reiniciar el desafío";
                 PanRespuesta.SetActive(true);
@@ -57,10 +67,11 @@ public class ObjectSpawner : MonoBehaviour
             }
             else
             {
+                resultado = false;
                 TXTRespuesta.text = "Resultado incorrecto";
                 repetir.text = "Volver a intentarlo";
                 PanRespuesta.SetActive(true);
-
+                InfNum.text = "";
             }
         }
     }
